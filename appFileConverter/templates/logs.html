@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="app">
+  <div class="col-6 pt-5  mx-auto">
+    <div class="text-center mt-3">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/612I9cVZq1L.png" style="height:200px " class="img-fluid img-reponsive text-center"/>
+      <h4>Logs</h4>
+      {% if data %}
+        <h5 style="color:Tomato;">All Logs</h5>
+      {% else %}
+        <h5 style="color:Tomato;">No Logs Found</h5>
+      {% endif %}
+    </div>
+
+      {% csrf_token %}
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Requested At</th>
+            <th>Status</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data %}
+          <tr>
+            <td>{{row.fileName}}</td>
+            <td>{{row.convertedFrom}}</td>
+            <td>{{row.convertedTo}}</td>
+            <td>{{row.requestedTime}}</td>
+            <td>{{row.conversionStatus}}</td>
+            <td>
+              {% if row.convertedFilePath %}
+                <a href={{row.convertedFilePath}} download>Download</a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  </div>
+</div>
+
+{% endblock %}

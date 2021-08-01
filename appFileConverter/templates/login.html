@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="app">
+  <div class="col-6 pt-5  mx-auto">
+    <div class="text-center mt-3">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/612I9cVZq1L.png" style="height:200px " class="img-fluid img-reponsive text-center"/>
+      <h4>Log In</h4>
+      {% if message %}
+      <h5 style="color:Tomato;">{{ message }}</h5>
+      {% endif %}
+    </div>
+
+    <form class="m" method="POST">
+      {% csrf_token %}
+      <div class="form-group pt-4">
+        <div class="form-group pt-2">
+          <label for="email1">Email address</label>
+          <input type="email" name="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email"/>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" name="password" class="form-control" id="password1" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

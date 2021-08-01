@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mx-auto mt-5 pt-5">
+    <p>Convert Files 😃</p>
+
+    <form method="POST" enctype="multipart/form-data" class="mt-5">
+        {% csrf_token %}
+        <label for="cars">Convert From:</label>
+        <select id="cars" name="convertFrom">
+            <option value="doc">.doc</option>
+            <option value="png">.png</option>
+        </select>
+
+        <label for="cars">Convert To:</label>
+        <select id="cars" name="convertTo">
+            <option value="pdf">.pdf</option>
+        </select>
+        <br/>
+        <br/>
+        <input id="file" name="file" type="file" accept=".doc, .docx, .png" />
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br/>
+    <br/>        
+    <br/>
+    <br/>
+    <button class="btn btn-success", onclick="location.href='/getLogs'">Show Logs</button>
+</div>
+{% endblock %}
